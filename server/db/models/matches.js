@@ -3,7 +3,7 @@ const db = require('../db');
 
 const Match = db.define('match', {
   date: {
-    type: Sequelize.DATEONLY,
+    type: Sequelize.DATE,
   },
   booked: {
     type: Sequelize.BOOLEAN,
@@ -14,9 +14,9 @@ const Match = db.define('match', {
   timeSpan: {
     type: Sequelize.STRING,
   },
-  locationId: {
-    type: Sequelize.INTEGER,
-  },
+  // locationId: {
+  //   type: Sequelize.INTEGER,
+  // },
   matchType: {
     type: Sequelize.STRING,
   },
