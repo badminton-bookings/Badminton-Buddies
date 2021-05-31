@@ -3,29 +3,29 @@
 const db = require("./db");
 
 const User = require("./models/user");
-const leaderBoard = require("./models/leaderBoard");
-const locations = require("./models/locations");
-const matches = require("./models/matches");
+const LeaderBoard = require("./models/leaderBoard");
+const Location = require("./models/locations");
+const Match = require("./models/matches");
 
 
 //associations
-User.belongsTo(leaderBoard)
-User.hasMany(matches)
+User.hasOne(LeaderBoard)
+User.hasMany(Match)
 
-matches.belongsTo(User)
-matches.hasOne(locations)
+Match.belongsTo(User)
+Match.belongsTo(Location)
 
-locations.belongsTo(matches)
+Location.hasMany(Match)
 
-leaderBoard.hasMany(User)
+LeaderBoard.belongsTo(User)
 
 
 module.exports = {
   db,
   User,
-  matches,
-  locations,
-  leaderBoard,
+  Match,
+  Location,
+  LeaderBoard,
 };
 
 // The HasOne association

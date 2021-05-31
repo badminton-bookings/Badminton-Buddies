@@ -46,19 +46,18 @@ async function seed() {
     Match.create({
       userId: 1,
       date: "7/01/2021",
-      booked: "yes",
-      checkIn: "yes",
+      booked: true,
+      checkIn: true,
       timeSpan: "2 hours",
-      locationId:  "1",
-      matchType: "Singles"
+      matchType: "Singles",
+      locationId: 1
     }),
     Match.create({
       userId: 2,
       date: "7/31/2021",
-      booked: "no",
-      checkIn: "yes",
+      booked: false,
+      checkIn: false,
       timeSpan: "5 hours",
-      locationId:  "1",
       matchType: "Doubles"
     }),
   ]);
@@ -66,15 +65,15 @@ async function seed() {
   const leaderBoard = await Promise.all([
     LeaderBoard.create({
       userId: 1,
-      wins: "2",
-      losess: "5",
-      ties: "9",
+      wins: 2,
+      losses: 5,
+      ties: 9,
     }),
   ]);
 
-  await matches[0].setUser(users[0]);
-  await locations[0].setMatches(matches[0]);
-  await leaderBoard[0].setUser(user[0]);
+  // await matches[0].setUser(users[0]);
+  // await locations[0].setMatches(matches[0]);
+  // await leaderBoard[0].setUser(user[0]);
 
   console.log(`seeded successfully`);
 }
