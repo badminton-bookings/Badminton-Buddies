@@ -69,6 +69,12 @@ async function seed() {
       losses: 5,
       ties: 9,
     }),
+    LeaderBoard.create({
+      userId: 2,
+      wins: 5,
+      losses: 5,
+      ties: 0,
+    }),
   ]);
 
   // await matches[0].setUser(users[0]);
