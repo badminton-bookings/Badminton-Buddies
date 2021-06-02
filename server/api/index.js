@@ -2,9 +2,9 @@ const router = require("express").Router();
 module.exports = router;
 
 router.use("/users", require("./users"));
-// router.use("/matches", require("./matches"));
-// router.use("/locations", require("./locations"));
-// router.use("/leaderBoard", require("./leaderBoard"));
+router.use("/matches", require("./matches"));
+router.use("/locations", require("./locations"));
+router.use("/leaderBoard", require("./leaderBoard"));
 
 
 router.use((req, res, next) => {

@@ -41,6 +41,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+
 //UPDATE api/users/userId
 router.put('/:id', async (req, res, next) => {
   try {

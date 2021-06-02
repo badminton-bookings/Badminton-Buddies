@@ -14,9 +14,9 @@ const Match = db.define('match', {
   timeSpan: {
     type: Sequelize.STRING,
   },
-  // locationId: {
-  //   type: Sequelize.INTEGER,
-  // },
+  adminId: {
+    type: Sequelize.INTEGER,
+  },
   matchType: {
     type: Sequelize.STRING,
   },

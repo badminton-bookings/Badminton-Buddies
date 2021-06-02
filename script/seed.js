@@ -36,8 +36,20 @@ async function seed() {
     Location.create({
       gymName: "NYBC",
       zipCode: "11354",
-      price: "18",
+      price: "10",
       address: "132-70 34th Ave, Queens, NY"
+    }),
+    Location.create({
+      gymName: "Long Island Sports Center",
+      zipCode: "11576",
+      price: "19",
+      address: " 22 Lumber Rd, Roslyn, NY"
+    }),
+    Location.create({
+      gymName: "Tiger Badminton",
+      zipCode: "11374",
+      price: "18",
+      address: " 97-30 Queens Blvd, Rego Park, NY"
     }),
   ]);
 
@@ -49,6 +61,7 @@ async function seed() {
       booked: true,
       checkIn: true,
       timeSpan: "2 hours",
+      adminId: 1,
       matchType: "Singles",
       locationId: 1
     }),
@@ -58,6 +71,7 @@ async function seed() {
       booked: false,
       checkIn: false,
       timeSpan: "5 hours",
+      adminId: 2,
       matchType: "Doubles"
     }),
   ]);

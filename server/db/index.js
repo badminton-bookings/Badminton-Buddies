@@ -12,8 +12,7 @@ const Match = require("./models/matches");
 User.hasOne(LeaderBoard)
 User.hasMany(Match)
 
-Match.belongsTo(User)
-Match.belongsTo(Location)
+Match.belongsToMany(User, {through: 'UserMatch'})
 
 Location.hasMany(Match)
 
