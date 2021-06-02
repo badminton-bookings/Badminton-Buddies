@@ -1,15 +1,12 @@
 const router = require('express').Router();
-const { User, Issue, Solution, Stat } = require('../db');
-const { requireToken } = require('./authMiddleware');
+const { User } = require('../db');
+// const { requireToken } = require('./authMiddleware');
 module.exports = router;
 
 // GET /api/users
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      // explicitly select only the id and email fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
       attributes: ['id', 'email'],
     });
     res.json(users);
@@ -18,45 +15,39 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-//GET /api/users/issues
-router.get('/issues', requireToken, async (req, res, next) => {
+
+//GET api/users/login
+router.get('/login', async (req, res, next) => {
   try {
-    const issues = await Issue.findAll({
+    const loggedInUser = await User.findOne({
       where: {
-        userId: req.user.id,
+        email: req.user.email,
       },
-      include: [{ model: Solution }],
     });
-    res.json(issues);
+    res.json(loggedInUser);
   } catch (error) {
     next(error);
   }
 });
 
-//GET /api/users/solutions
-router.get('/solutions', requireToken, async (req, res, next) => {
+
+//CREATE api/users/
+router.post('/', async (req, res, next) => {
   try {
-    const solutions = await Solution.findAll({
-      where: {
-        userId: req.user.id,
-      },
-      include: [{ model: Issue }],
-    });
-    res.json(solutions);
+    const newUser = await User.create(req.body);
+    res.json(newUser);
   } catch (error) {
     next(error);
   }
 });
 
-//GET /api/users/stats
-router.get('/stats', requireToken, async (req, res, next) => {
+//UPDATE api/users/userId
+router.put('/:id', async (req, res, next) => {
   try {
-    const stats = await Stat.findAll({
-      where: {
-        userId: req.user.id,
-      },
+    const editedUser = await User.update(req.body, {
+      where: {id: req.params.id}
     });
-    res.json(stats);
+    res.json(editedUser);
   } catch (error) {
     next(error);
   }
