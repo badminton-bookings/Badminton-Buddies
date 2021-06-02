@@ -1,38 +1,52 @@
 const router = require('express').Router();
-const { User, Issue, Solution, Stat } = require('../db');
-const { requireToken } = require('./authMiddleware');
+const { Location } = require('../db');
 module.exports = router;
 
+//GET /api/locations
 router.get('/', async (req, res, next) => {
+    try {
+      const allLocations = await Location.findAll();
+      res.json(allLocations);
+    } catch (err) {
+      next(err);
+    }
+  });
+
+
+//GET /api/locations/locationId
+router.get('/:id', async (req, res, next) => {
   try {
-    const stats = await Stat.findAll();
-    res.json(stats);
-  } catch (error) {
-    next(error);
+    const singleLocation = await Location.findOne({
+      where: {
+        id: req.params.id,
+      }
+    });
+    res.json(singleLocation);
+  } catch (err) {
+    next(err);
   }
 });
 
-router.put('/', async (req, res, next) => {
-  try {
-    if (!req.body.issue.isResolved) {
-      const issueOwner = await Stat.findOne({
-        where: {
-          userId: req.body.issue.userId,
-        },
-      });
-      const problemSolver = await Stat.findOne({
-        where: {
-          userId: req.body.solution.userId,
-        },
-      });
-      issueOwner.totalEscrow -= Number(req.body.issue.price);
-      issueOwner.totalPaid += Number(req.body.issue.price);
-      problemSolver.totalEarned += Number(req.body.issue.price);
-      problemSolver.solutionsAccepted += 1;
-      await issueOwner.save();
-      await problemSolver.save();
+  //GET /api/locations
+  router.post('/', async (req, res, next) => {
+    try {
+      const newLocation = await Location.create(req.body);
+      res.json(newLocation);
+    } catch (error) {
+      next(error);
     }
-  } catch (error) {
-    next(error);
-  }
-});
+  });
+
+  //GET /api/locations/locationId
+  router.put('/:id', async (req, res, next) => {
+    try {
+      const editLocation = await Location.update(req.body, {
+        where: {id: req.params.id}
+      });
+      res.json(editLocation);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+
