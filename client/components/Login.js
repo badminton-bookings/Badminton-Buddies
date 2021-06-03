@@ -16,6 +16,7 @@ export default function Login() {
  
   return (
     <View style={styles.container}>
+        <Text style={styles.Title}  >Badminton Buddies</Text>
         <Image style={styles.Image} source={require('../../assets/birdie.png')} ></Image>
       <StatusBar style="auto" />
       <View style={styles.inputView}>
@@ -37,10 +38,6 @@ export default function Login() {
         />
       </View>
  
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
-      </TouchableOpacity>
- 
       <TouchableOpacity style={styles.loginBtn}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
@@ -57,7 +54,7 @@ const styles = StyleSheet.create({
   },
  
   inputView: {
-    backgroundColor: "#FFC0CB",
+    backgroundColor: "skyblue",
     borderRadius: 30,
     width: "70%",
     height: 45,
@@ -73,11 +70,6 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
  
-  forgot_button: {
-    height: 30,
-    marginBottom: 30,
-  },
- 
   loginBtn: {
     width: "80%",
     borderRadius: 25,
@@ -85,12 +77,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#FF1493",
+    backgroundColor: "#005ed1",
   },
 
   Image: {
       width: 150,
       height: 150,
       margin: 10,
+  },
+  
+  Title: {
+      fontSize: 30,
+      margin: 10,
+      fontWeight: 'bold',
   }
 });
