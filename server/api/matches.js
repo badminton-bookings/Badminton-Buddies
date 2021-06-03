@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Match } = require('../db');
 module.exports = router;
 
-//GET /api/matches
+// GET ALL MATCHES /api/matches
 router.get('/', async (req, res, next) => {
     try {
       const allMatches = await Match.findAll();
@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
     }
   });
 
-  //GET /api/matches
+  // CREATE NEW MATCH /api/matches
   router.post('/', async (req, res, next) => {
     try {
       const newMatch = await Match.create(req.body);
@@ -21,7 +21,7 @@ router.get('/', async (req, res, next) => {
       next(error);
     }
   });
-  //GET /api/matches/matchId
+  // EDIT MATCH /api/matches/matchId
   router.put('/:id', async (req, res, next) => {
     try {
       const editMatch = await Match.update(req.body, {
@@ -32,4 +32,14 @@ router.get('/', async (req, res, next) => {
       next(error);
     }
   });
+  
+  // DELETE MATCH /api/matches
+  router.delete('/id', async (req, res, next) => {
+    try {
+      const deletedMatch = await Match.delete()
+      res.sendStatus(200)
+    } catch (error) {
+      next(error)
+    }
+  })
   

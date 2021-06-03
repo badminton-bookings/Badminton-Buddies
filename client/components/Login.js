@@ -16,8 +16,7 @@ export default function Login() {
  
   return (
     <View style={styles.container}>
-      {/* <Image style={styles.image} source={require("./assets/log2.png")} /> */}
- 
+        <Image style={styles.Image} source={require('../../assets/birdie.png')} ></Image>
       <StatusBar style="auto" />
       <View style={styles.inputView}>
         <TextInput
@@ -57,10 +56,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
  
-  image: {
-    marginBottom: 40,
-  },
- 
   inputView: {
     backgroundColor: "#FFC0CB",
     borderRadius: 30,
@@ -92,4 +87,10 @@ const styles = StyleSheet.create({
     marginTop: 40,
     backgroundColor: "#FF1493",
   },
+
+  Image: {
+      width: 150,
+      height: 150,
+      margin: 10,
+  }
 });
