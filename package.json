@@ -10,6 +10,7 @@
     "seed": "node script/seed.js"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "expo": "~41.0.1",
     "expo-status-bar": "~1.0.4",
     "express": "^4.17.1",
