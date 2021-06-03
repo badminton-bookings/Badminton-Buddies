@@ -11,6 +11,17 @@ router.get('/', async (req, res, next) => {
       next(err);
     }
   });
+  
+// FIND SINGLE MATCH /api/matches/matchId
+  router.get('/:id', async (req, res, next) => {
+    try {
+      const matchId = req.params.id
+      const singleMatch = await Match.findByPk(matchId);
+      res.json(editMatch);
+    } catch (error) {
+      next(error);
+    }
+  });
 
   // CREATE NEW MATCH /api/matches
   router.post('/', async (req, res, next) => {
