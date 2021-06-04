@@ -10,8 +10,8 @@ export default function App() {
         <View style={styles.container}>
             {/* <Login/> */}
             {/* <Gender/> */}
-            {/* <SkillLevel/> */}
-            <ZipCode/>
+            <SkillLevel/>
+            {/* <ZipCode/> */}
         </View>
     )
 }
