@@ -12,6 +12,16 @@ router.get('/', async (req, res, next) => {
     }
   });
 
+  // GET SINGLE MATCH /api/matches/matchId
+  router.get('/:id', async (req, res, next) => {
+    try {
+      const singleMatch = await Match.findByPk(req.params.id);
+      res.json(singleMatch);
+    } catch (error) {
+      next(error);
+    }
+  });
+
   // CREATE NEW MATCH /api/matches
   router.post('/', async (req, res, next) => {
     try {
@@ -32,14 +42,16 @@ router.get('/', async (req, res, next) => {
       next(error);
     }
   });
-  
+
   // DELETE MATCH /api/matches
-  router.delete('/id', async (req, res, next) => {
+  router.delete('/:id', async (req, res, next) => {
     try {
-      const deletedMatch = await Match.delete()
+      const deletedMatch = await Match.destroy({
+        where: {id: req.params.id }
+      })
       res.sendStatus(200)
     } catch (error) {
       next(error)
     }
   })
-  
+

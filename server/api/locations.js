@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Location } = require('../db');
 module.exports = router;
 
-//GET /api/locations
+//GET ALL LOCATIONS /api/locations
 router.get('/', async (req, res, next) => {
     try {
       const allLocations = await Location.findAll();
@@ -13,21 +13,17 @@ router.get('/', async (req, res, next) => {
   });
 
 
-//GET /api/locations/locationId
+//GET SINGLE LOCATION /api/locations/locationId
 router.get('/:id', async (req, res, next) => {
   try {
-    const singleLocation = await Location.findOne({
-      where: {
-        id: req.params.id,
-      }
-    });
+    const singleLocation = await Location.findByPk(req.params.id);
     res.json(singleLocation);
   } catch (err) {
     next(err);
   }
 });
 
-  //GET /api/locations
+  //CREATE NEW LOCATION /api/locations
   router.post('/', async (req, res, next) => {
     try {
       const newLocation = await Location.create(req.body);
