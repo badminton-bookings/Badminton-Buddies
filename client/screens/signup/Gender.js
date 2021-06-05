@@ -1,5 +1,6 @@
+import { useNavigation } from "@react-navigation/core";
 import React from "react";
-import { render } from "react-dom";
+
 import {
   StyleSheet,
   Text,
@@ -9,24 +10,30 @@ import {
 } from "react-native";
 
 export default function Gender() {
+  const navigation = useNavigation()
+
+  const nextScreen = () => {
+    Alert.alert("Simple Button pressed")
+    navigation.navigate('Skill Level')
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.Title}  >What is you gender?</Text>
+      <Text style={styles.Title}  >What is your gender?</Text>
 
       <View style={styles.buttonContainer}>
         <Button
           style={styles.button}
-          onPress={() => Alert.alert("Simple Button pressed")}
+          onPress={() => nextScreen()}
           title="Male"
         ></Button>
         <Button
           style={styles.button}
-          onPress={() => Alert.alert("Simple Button pressed")}
+          onPress={() => nextScreen()}
           title="Female"
         ></Button>
         <Button
           style={styles.button}
-          onPress={() => Alert.alert("Simple Button pressed")}
+          onPress={() => nextScreen()}
           title="Other"
         ></Button>
       </View>
