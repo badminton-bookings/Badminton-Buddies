@@ -9,10 +9,13 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { useNavigation } from "@react-navigation/core";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigation = useNavigation()
 
   return (
     <View style={styles.container}>
@@ -41,8 +44,17 @@ export default function Login() {
         <Text style={styles.forgot_button}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginBtn}>
+      <TouchableOpacity
+        style={styles.loginBtn}
+        onPress={() => navigation.navigate('Main')}>
         <Text style={styles.loginText}>LOGIN</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.loginBtn}
+        onPress={() => navigation.navigate('Gender')}
+      >
+        <Text style={styles.loginText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
   );
