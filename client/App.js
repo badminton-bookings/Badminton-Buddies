@@ -20,9 +20,10 @@ export default function App() {
             <Stack.Screen
               name="Login"
               component={Login} />
-            {/* <Stack.Screen
+            {/* <Stack.Screen Nest another Stack.Navigator here??
               name="Home"
               component={TabNavigator} /> */}
+
           </>
         ) :
           <Stack.Screen
