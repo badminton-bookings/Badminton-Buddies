@@ -23,7 +23,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        {true /*isLoading*/ ? (
+        {true /*isNotLoggedIn*/ ? (
           <Stack.Screen
             name="Login"
             component={LoginStack} />
@@ -36,10 +36,6 @@ export default function App() {
     </NavigationContainer>
   )
 }
-            {/* <Login/> */}
-            {/* <Gender/> */}
-            {/* <SkillLevel/> */}
-            {/* <ZipCode/> */}
 
 const styles = StyleSheet.create({
     container: {

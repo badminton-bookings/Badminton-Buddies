@@ -1,23 +1,19 @@
 import React from "react";
 import { render } from "react-dom";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput
-} from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 
 export default function ZipCode() {
   return (
     <View style={styles.container}>
       <Text style={styles.Title}>Where do you live?</Text>
 
+    <View  style={styles.TextInput}>
       <TextInput
-        //   style={styles.TextInput}
-          placeholder="Zip Code."
-          placeholderTextColor="#003f5c"
+        placeholder="Zip Code..."
+        placeholderTextColor="#003f5c"
         //   onChangeText={(zipCode) => setZipCode(zipCode)}
-        />
+      />
+      </View>
     </View>
   );
 }
@@ -33,6 +29,13 @@ const styles = StyleSheet.create({
   Title: {
     fontSize: 30,
     margin: 10,
-    fontWeight: 'bold',
-}
+    fontWeight: "bold",
+  },
+  TextInput: {
+      borderWidth: 2,
+      borderColor: 'skyblue',
+      borderRadius: 10,
+      padding: 5,
+      width: "75%",
+  }
 });
