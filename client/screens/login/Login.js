@@ -9,15 +9,17 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
- 
+import { useNavigation } from "@react-navigation/core";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- 
+
+  const navigation = useNavigation()
+
   return (
     <View style={styles.container}>
-        <Text style={styles.Title}  >Badminton Buddies</Text>
-        <Image style={styles.Image} source={require('../../assets/birdie.png')} ></Image>
+        <Image style={styles.Image} source={require('../../../assets/birdie.png')} ></Image>
       <StatusBar style="auto" />
       <View style={styles.inputView}>
         <TextInput
@@ -27,7 +29,7 @@ export default function Login() {
           onChangeText={(email) => setEmail(email)}
         />
       </View>
- 
+
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -37,14 +39,27 @@ export default function Login() {
           onChangeText={(password) => setPassword(password)}
         />
       </View>
- 
-      <TouchableOpacity style={styles.loginBtn}>
+
+      <TouchableOpacity>
+        <Text style={styles.forgot_button}>Forgot Password?</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.loginBtn}
+        onPress={() => navigation.navigate('Main')}>
         <Text style={styles.loginText}>LOGIN</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.loginBtn}
+        onPress={() => navigation.navigate('Gender')}
+      >
+        <Text style={styles.loginText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
   );
 }
- 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -52,24 +67,29 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
- 
+
   inputView: {
     backgroundColor: "skyblue",
     borderRadius: 30,
     width: "70%",
     height: 45,
     marginBottom: 20,
- 
+
     alignItems: "center",
   },
- 
+
   TextInput: {
     height: 50,
     flex: 1,
     padding: 10,
     marginLeft: 20,
   },
- 
+
+  forgot_button: {
+    height: 30,
+    marginBottom: 30,
+  },
+
   loginBtn: {
     width: "80%",
     borderRadius: 25,
@@ -85,7 +105,7 @@ const styles = StyleSheet.create({
       height: 150,
       margin: 10,
   },
-  
+
   Title: {
       fontSize: 30,
       margin: 10,

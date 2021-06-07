@@ -23,7 +23,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-  //GET /api/locations
+  //CREATE NEW LOCATION /api/locations
   router.post('/', async (req, res, next) => {
     try {
       const newLocation = await Location.create(req.body);

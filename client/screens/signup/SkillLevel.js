@@ -1,7 +1,14 @@
 // import { text } from "express";
 import React from "react";
 import { render } from "react-dom";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  Alert,
+} from "react-native";
+
 import CardFlip from "react-native-card-flip";
 
 export default function SkillLevel() {
