@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { connect } from 'react-redux';
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -11,7 +12,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 
-export default function Login() {
+export default function AuthForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -59,6 +60,37 @@ export default function Login() {
     </View>
   );
 }
+
+const mapLogin = (state) => {
+  return {
+    name: "login",
+    displayName: "Login",
+    error: state.auth.error,
+  };
+};
+
+const mapSignup = (state) => {
+  return {
+    name: "signup",
+    displayName: "Sign Up",
+    error: state.auth.error,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    handleSubmit(evt) {
+      evt.preventDefault();
+      const formName = evt.target.name;
+      const username = evt.target.username.value;
+      const password = evt.target.password.value;
+      dispatch(authenticate(username, password, formName));
+    },
+  };
+};
+
+export const Login = connect(mapLogin, mapDispatch)(AuthForm);
+export const Signup = connect(mapSignup, mapDispatch)(AuthForm);
 
 const styles = StyleSheet.create({
   container: {
