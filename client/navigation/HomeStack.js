@@ -10,7 +10,7 @@ export default function HomeStack() {
     <Stack.Navigator>
       <Stack.Screen 
       name={'Home'}
-      component={Home}/>
+      component={Home} />
     </Stack.Navigator>
   )
 }

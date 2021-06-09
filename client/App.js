@@ -39,10 +39,6 @@ export default function App() {
     </Provider>
   )
 }
-            {/* <Login/> */}
-            {/* <Gender/> */}
-            {/* <SkillLevel/> */}
-            {/* <ZipCode/> */}
 
 const styles = StyleSheet.create({
     container: {
