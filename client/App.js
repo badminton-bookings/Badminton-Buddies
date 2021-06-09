@@ -1,7 +1,8 @@
-import React from 'react'
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
 
 import TabNavigator from './navigation/TabNavigator'
 import LoginStack from './navigation/LoginStack';
@@ -21,19 +22,21 @@ export default function App() {
   // }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        {true /*isNotLoggedIn*/ ? (
-          <Stack.Screen
-            name="Login"
-            component={LoginStack} />
-        ) :
-          <Stack.Screen
-          name="Main"
-          component={TabNavigator} />
-        }
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          {true /*isLoading*/ ? (
+            <Stack.Screen
+              name="Login"
+              component={LoginStack} />
+          ) :
+            <Stack.Screen
+            name="Main"
+            component={TabNavigator} />
+          }
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   )
 }
 
